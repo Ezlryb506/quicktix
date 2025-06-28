@@ -36,7 +36,7 @@ Aplikasi menggunakan database MySQL dengan tabel utama:
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/username/quicktix.git
+   git clone https://github.com/Ezlryb506/quicktix.git
    cd quicktix
    ```
 
@@ -129,7 +129,7 @@ Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) un
 
 ## Kontak
 - **Email**: your-email@example.com
-- **GitHub**: [@username](https://github.com/username)
+- **GitHub**: [@username](https://github.com/Ezlryb506)
 
 ## Screenshots
 [Tambahkan screenshot aplikasi di sini]

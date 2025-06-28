@@ -9,7 +9,7 @@ git init
 git add .
 git commit -m "Initial commit: QuickTix project"
 git branch -M main
-git remote add origin https://github.com/username/quicktix.git
+git remote add origin https://github.com/Ezlryb506/quicktix.git
 git push -u origin main
 ```
 
