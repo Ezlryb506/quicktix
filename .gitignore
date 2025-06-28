@@ -1,0 +1,79 @@
+# CodeIgniter .gitignore
+# Ignore application cache
+application/cache/*
+!application/cache/index.html
+
+# Ignore application logs
+application/logs/*
+!application/logs/index.html
+
+# Ignore application config files that might contain sensitive data
+application/config/database.php
+application/config/config.php
+
+# Ignore uploaded files (optional - remove if you want to include uploads)
+uploads/*
+!uploads/index.html
+
+# Ignore system cache
+system/cache/*
+!system/cache/index.html
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore backup files
+*.bak
+*.backup
+
+# Ignore environment files
+.env
+.env.local
+.env.production
+
+# Ignore composer files (if using)
+vendor/
+composer.lock
+
+# Ignore node modules (if using any frontend build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+tests/mocks/database/ci_test.sqlite
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+/tests/tests/
+/tests/results/

@@ -1,0 +1,26 @@
+# Dokumentasi Pengembangan QuickTix
+
+## Implementasi Pagination pada Halaman Events/Search
+
+### Tanggal: [Tanggal Implementasi]
+### Deskripsi: Menambahkan sistem pagination pada halaman pencarian event dengan limit 15 card per halaman
+
+### Perubahan yang Dilakukan:
+
+#### 1. Controller (application/controllers/Events.php)
+- Menambahkan library pagination di constructor
+- Memodifikasi method search() untuk mendukung pagination
+- Menambahkan konfigurasi pagination dengan styling Bootstrap
+- Menambahkan parameter search_query dan page
+- Menggunakan method model baru untuk pagination
+
+#### 2. Model (application/models/Event_model.php)
+- Menambahkan method get_events_count() untuk menghitung total records
+- Menambahkan method get_events_paginated() untuk mengambil data dengan limit dan offset
+- Menambahkan filter untuk mengecualikan event tipe 'Bioskop'
+- Mendukung pencarian berdasarkan nama event
+
+#### 3. View (application/views/events/search.php)
+- Menambahkan tampilan pagination di bawah events grid
+- Menambahkan informasi jumlah hasil yang ditampilkan
+- Menambahkan tampilan "Tidak ada hasil" ketika tidak ada e
