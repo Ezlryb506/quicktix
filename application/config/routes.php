@@ -74,3 +74,18 @@ $route['tickets/validate_qr_page'] = 'tickets/validate_qr_page';
 // Profile Routes
 $route['profile'] = 'profile/index';
 $route['profile/settings'] = 'profile/settings';
+
+// Admin Routes
+$route['admin'] = 'admin/index';
+$route['admin/events'] = 'admin/events';
+$route['admin/add_event'] = 'admin/add_event';
+$route['admin/edit_event/(:any)'] = 'admin/edit_event/$1';
+$route['admin/delete_event/(:any)'] = 'admin/delete_event/$1';
+$route['admin/transactions'] = 'admin/transactions';
+$route['admin/update_transaction_status/(:any)'] = 'admin/update_transaction_status/$1';
+$route['admin/users'] = 'admin/users';
+$route['admin/edit_user/(:any)'] = 'admin/edit_user/$1';
+$route['admin/toggle_user_status/(:any)'] = 'admin/toggle_user_status/$1';
+$route['admin/delete_user/(:any)'] = 'admin/delete_user/$1';
+$route['admin/validate_qr'] = 'admin/validate_qr';
+$route['admin/get_images'] = 'admin/get_images';

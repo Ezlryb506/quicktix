@@ -17,10 +17,8 @@ class Transaction extends CI_Controller {
     }
 
     public function index() {
-        $user_id = $this->session->userdata('user_id');
-        $data['transactions'] = $this->event_model->get_transactions_by_user($user_id);
-        $data['title'] = 'Riwayat Transaksi - QuickTix';
-        $this->load->view('transaction/index', $data);
+        // Redirect ke halaman tickets
+        redirect('tickets');
     }
 
     public function create() {
@@ -93,7 +91,7 @@ class Transaction extends CI_Controller {
             redirect('events/search');
         } else {
             $this->session->set_flashdata('success', 'Transaksi berhasil! Tiket Anda telah dikonfirmasi.');
-            redirect('transaction/detail/' . $transaction_id);
+            redirect('tickets/detail/' . $transaction_id);
         }
     }
 

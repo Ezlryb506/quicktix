@@ -40,6 +40,27 @@ class Tickets extends CI_Controller {
         $this->load->view('tickets/print', $data);
     }
 
+    public function detail($transaction_id) {
+        $user_id = $this->session->userdata('user_id');
+        
+        // Ambil data transaksi
+        $this->db->select('transactions.*, tickets.event_name, tickets.event_type, tickets.location, tickets.date');
+        $this->db->from('transactions');
+        $this->db->join('tickets', 'tickets.id = transactions.ticket_id');
+        $this->db->where('transactions.id', $transaction_id);
+        $this->db->where('transactions.user_id', $user_id);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() === 0) {
+            $this->session->set_flashdata('error', 'Transaksi tidak ditemukan!');
+            redirect('tickets');
+        }
+
+        $data['transaction'] = $query->row_array();
+        $data['title'] = 'Detail Tiket - QuickTix';
+        $this->load->view('tickets/detail', $data);
+    }
+
     // Endpoint validasi QR code
     public function validate_qr()
     {

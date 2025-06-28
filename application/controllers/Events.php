@@ -70,33 +70,87 @@ class Events extends CI_Controller {
         
         $query_string = !empty($query_params) ? '?' . implode('&', $query_params) . '&' : '?';
         
-        $pagination = '<ul class="pagination">';
+        $pagination = '<div class="pagination-container">';
+        $pagination .= '<nav class="pagination-nav" aria-label="Navigasi halaman">';
+        $pagination .= '<ul class="pagination-list">';
+        
+        // First page button
+        if ($current_page > 1) {
+            $pagination .= '<li class="pagination-item">';
+            $pagination .= '<a href="' . $base_url . $query_string . 'page=1" class="pagination-link pagination-first" title="Halaman Pertama">';
+            $pagination .= '<i class="fas fa-angle-double-left"></i>';
+            $pagination .= '</a></li>';
+        }
         
         // Previous button
         if ($current_page > 1) {
             $prev_page = $current_page - 1;
-            $pagination .= '<li><a href="' . $base_url . $query_string . 'page=' . $prev_page . '">Sebelumnya</a></li>';
+            $pagination .= '<li class="pagination-item">';
+            $pagination .= '<a href="' . $base_url . $query_string . 'page=' . $prev_page . '" class="pagination-link pagination-prev" title="Halaman Sebelumnya">';
+            $pagination .= '<i class="fas fa-angle-left"></i>';
+            $pagination .= '</a></li>';
         }
         
         // Page numbers
         $start_page = max(1, $current_page - 2);
         $end_page = min($total_pages, $current_page + 2);
         
+        // Show first page if not in range
+        if ($start_page > 1) {
+            $pagination .= '<li class="pagination-item">';
+            $pagination .= '<a href="' . $base_url . $query_string . 'page=1" class="pagination-link">1</a>';
+            $pagination .= '</li>';
+            if ($start_page > 2) {
+                $pagination .= '<li class="pagination-item pagination-ellipsis">';
+                $pagination .= '<span class="pagination-ellipsis-text">...</span>';
+                $pagination .= '</li>';
+            }
+        }
+        
         for ($i = $start_page; $i <= $end_page; $i++) {
             if ($i == $current_page) {
-                $pagination .= '<li class="active"><a href="#">' . $i . '</a></li>';
+                $pagination .= '<li class="pagination-item">';
+                $pagination .= '<span class="pagination-link pagination-current" aria-current="page">' . $i . '</span>';
+                $pagination .= '</li>';
             } else {
-                $pagination .= '<li><a href="' . $base_url . $query_string . 'page=' . $i . '">' . $i . '</a></li>';
+                $pagination .= '<li class="pagination-item">';
+                $pagination .= '<a href="' . $base_url . $query_string . 'page=' . $i . '" class="pagination-link">' . $i . '</a>';
+                $pagination .= '</li>';
             }
+        }
+        
+        // Show last page if not in range
+        if ($end_page < $total_pages) {
+            if ($end_page < $total_pages - 1) {
+                $pagination .= '<li class="pagination-item pagination-ellipsis">';
+                $pagination .= '<span class="pagination-ellipsis-text">...</span>';
+                $pagination .= '</li>';
+            }
+            $pagination .= '<li class="pagination-item">';
+            $pagination .= '<a href="' . $base_url . $query_string . 'page=' . $total_pages . '" class="pagination-link">' . $total_pages . '</a>';
+            $pagination .= '</li>';
         }
         
         // Next button
         if ($current_page < $total_pages) {
             $next_page = $current_page + 1;
-            $pagination .= '<li><a href="' . $base_url . $query_string . 'page=' . $next_page . '">Selanjutnya</a></li>';
+            $pagination .= '<li class="pagination-item">';
+            $pagination .= '<a href="' . $base_url . $query_string . 'page=' . $next_page . '" class="pagination-link pagination-next" title="Halaman Selanjutnya">';
+            $pagination .= '<i class="fas fa-angle-right"></i>';
+            $pagination .= '</a></li>';
+        }
+        
+        // Last page button
+        if ($current_page < $total_pages) {
+            $pagination .= '<li class="pagination-item">';
+            $pagination .= '<a href="' . $base_url . $query_string . 'page=' . $total_pages . '" class="pagination-link pagination-last" title="Halaman Terakhir">';
+            $pagination .= '<i class="fas fa-angle-double-right"></i>';
+            $pagination .= '</a></li>';
         }
         
         $pagination .= '</ul>';
+        $pagination .= '</nav>';
+        $pagination .= '</div>';
         
         return $pagination;
     }
@@ -187,7 +241,7 @@ class Events extends CI_Controller {
             $this->session->set_flashdata('success', 'Pembelian tiket berhasil! Tiket Anda telah dikonfirmasi.');
             
             // Redirect ke halaman detail transaksi
-            redirect('transaction/detail/' . $transaction_id);
+            redirect('tickets/detail/' . $transaction_id);
         }
     }
 }

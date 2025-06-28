@@ -394,7 +394,7 @@
                         ?>
                     </div>
                     <div class="ticket-actions">
-                        <a href="<?php echo base_url('transaction/detail/' . $transaction['id']); ?>" class="btn btn-detail">
+                        <a href="<?php echo base_url('tickets/detail/' . $transaction['id']); ?>" class="btn btn-detail">
                             <i class="fas fa-eye"></i> Detail
                         </a>
                         <?php if($transaction['payment_status'] == 'paid'): ?>

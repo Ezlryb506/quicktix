@@ -36,6 +36,8 @@
         }
         input[type="text"] {
             width: 100%;
+            max-width: 382px;
+            margin: 0 auto;
             padding: 0.8rem 1rem;
             border: 2px solid #e1e1e1;
             border-radius: 8px;

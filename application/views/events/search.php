@@ -91,6 +91,38 @@
             border-radius: 2px;
         }
 
+        /* Styling untuk tombol login dan register */
+        .nav-link.btn-login {
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.btn-login:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .nav-link.btn-register {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.btn-register:hover {
+            background-color: #357ABD;
+            border-color: #357ABD;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
         .search-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -410,6 +442,12 @@
             color: var(--white);
         }
 
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
         .alert i {
             font-size: 1.2rem;
         }
@@ -430,6 +468,36 @@
             outline: none;
             box-shadow: 0 0 0 2px rgba(74,144,226,0.08);
         }
+
+        .clear-search-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            padding: 0.3rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .clear-search-btn:hover {
+            background: rgba(0,0,0,0.1);
+            color: var(--danger-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .clear-search-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
         .btn-search-event:hover {
             background: #357ABD;
             color: #fff;
@@ -439,112 +507,434 @@
 
         /* Pagination Styles */
         .pagination-container {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-top: 2rem;
-        }
-
-        .pagination {
+            margin-top: 3rem;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .pagination .page-item {
-            margin: 0 0.25rem;
-        }
-
-        .pagination .page-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            background: var(--white);
-        }
-
-        .pagination .page-link:hover {
-            background: var(--primary-color);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
-        }
-
-        .pagination .page-item.active .page-link {
-            background: var(--primary-color);
-            color: var(--white);
-            border-color: var(--primary-color);
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
-        }
-
-        .pagination .page-item.disabled .page-link {
-            color: #ccc;
-            border-color: #eee;
-            background: #f8f9fa;
-            cursor: not-allowed;
-        }
-
-        .pagination .page-item.disabled .page-link:hover {
-            transform: none;
-            box-shadow: none;
+            gap: 1.5rem;
         }
 
         .results-info {
+            background: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             color: var(--text-color);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
             font-weight: 500;
+            text-align: center;
         }
 
+        .pagination-wrapper {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .pagination-nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination-list {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pagination-item {
+            margin: 0;
+        }
+
+        .pagination-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pagination-link:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .pagination-link:active {
+            transform: translateY(0);
+        }
+
+        .pagination-current {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .pagination-first,
+        .pagination-last {
+            width: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            border-color: transparent;
+        }
+
+        .pagination-first:hover,
+        .pagination-last:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .pagination-prev,
+        .pagination-next {
+            width: 50px;
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+            color: var(--white);
+            border-color: transparent;
+        }
+
+        .pagination-prev:hover,
+        .pagination-next:hover {
+            background: linear-gradient(135deg, #357ABD 0%, #4A90E2 100%);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+        }
+
+        .pagination-ellipsis {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+        }
+
+        .pagination-ellipsis-text {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Pagination */
+        @media (max-width: 768px) {
+            .pagination-list {
+                gap: 0.3rem;
+            }
+
+            .pagination-link {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+
+            .pagination-first,
+            .pagination-last,
+            .pagination-prev,
+            .pagination-next {
+                width: 45px;
+            }
+
+            .results-info {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pagination-list {
+                gap: 0.2rem;
+            }
+
+            .pagination-link {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
+
+            .pagination-first,
+            .pagination-last,
+            .pagination-prev,
+            .pagination-next {
+                width: 40px;
+            }
+
+            .pagination-ellipsis {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        /* Animation for pagination */
+        .pagination-link {
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hover effects with ripple */
+        .pagination-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease;
+        }
+
+        .pagination-link:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* No results styling */
         .no-results {
             text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-color);
+            padding: 3rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         .no-results i {
             font-size: 4rem;
-            color: #ccc;
+            color: #ddd;
             margin-bottom: 1rem;
-            display: block;
         }
 
         .no-results h3 {
+            color: var(--text-color);
             margin-bottom: 0.5rem;
-            color: var(--secondary-color);
         }
 
         .no-results p {
             color: #666;
-            font-size: 0.9rem;
         }
 
-        /* Responsive pagination */
+        /* Lightbox Styles */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lightbox-modal.show {
+            opacity: 1;
+            display: flex;
+        }
+
+        .lightbox-image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            width: auto;
+            height: auto;
+        }
+
+        .lightbox-modal.show .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .lightbox-controls {
+            position: absolute;
+            top: 15px;
+            left: 35px;
+            display: flex;
+            gap: 10px;
+            z-index: 2001;
+        }
+
+        .lightbox-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        .lightbox-btn:active {
+            transform: scale(0.95);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: white;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Event detail image styles */
+        .event-detail-content img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .event-detail-content img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Zoom indicator */
+        .event-detail-content img::after {
+            content: "🔍";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 8px;
+            border-radius: 50%;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .event-detail-content img:hover::after {
+            opacity: 1;
+        }
+
+        /* Responsive lightbox */
         @media (max-width: 768px) {
-            .pagination .page-link {
+            .lightbox-image-container {
+                padding: 10px;
+            }
+            
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 85%;
+            }
+            
+            .lightbox-close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lightbox-controls {
+                top: 10px;
+                left: 20px;
+                gap: 8px;
+            }
+            
+            .lightbox-btn {
                 width: 35px;
                 height: 35px;
-                font-size: 0.9rem;
+                font-size: 14px;
             }
             
-            .pagination {
-                gap: 0.25rem;
-            }
-            
-            .results-info {
-                font-size: 0.8rem;
+            .lightbox-caption {
+                bottom: 10px;
+                width: 90%;
+                font-size: 1rem;
+                padding: 10px;
             }
         }
     </style>
@@ -554,18 +944,41 @@
     <div class="nav-container">
         <a href="<?php echo base_url(); ?>" class="nav-brand">QuickTix</a>
         <div class="nav-links">
-            <a href="<?php echo base_url('events/search'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'events' ? 'active' : ''; ?>">
-                <i class="fas fa-search"></i>
-                Cari Event
-            </a>
-            <a href="<?php echo base_url('tickets'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'tickets' ? 'active' : ''; ?>">
-                <i class="fas fa-ticket-alt"></i>
-                Tiket Saya
-            </a>
-            <a href="<?php echo base_url('auth/logout'); ?>" class="nav-link">
-                <i class="fas fa-sign-out-alt"></i>
-                Logout
-            </a>
+            <?php if($this->session->userdata('logged_in')): ?>
+                <!-- Menu untuk user yang sudah login -->
+                <a href="<?php echo base_url('events/search'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'events' ? 'active' : ''; ?>">
+                    <i class="fas fa-search"></i>
+                    Cari Event
+                </a>
+                <a href="<?php echo base_url('tickets'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'tickets' ? 'active' : ''; ?>">
+                    <i class="fas fa-ticket-alt"></i>
+                    Tiket Saya
+                </a>
+                <?php if($this->session->userdata('role') == 'admin'): ?>
+                    <a href="<?php echo base_url('admin'); ?>" class="nav-link" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                        <i class="fas fa-crown"></i>
+                        Admin Panel
+                    </a>
+                <?php endif; ?>
+                <a href="<?php echo base_url('auth/logout'); ?>" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            <?php else: ?>
+                <!-- Menu untuk user yang belum login -->
+                <a href="<?php echo base_url('events/search'); ?>" class="nav-link active">
+                    <i class="fas fa-search"></i>
+                    Cari Event
+                </a>
+                <a href="<?php echo base_url('auth/login'); ?>" class="nav-link btn-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Masuk
+                </a>
+                <a href="<?php echo base_url('auth/register'); ?>" class="nav-link btn-register">
+                    <i class="fas fa-user-plus"></i>
+                    Daftar
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -584,9 +997,18 @@
         </div>
         <?php endif; ?>
 
+        <?php if(!$this->session->userdata('logged_in')): ?>
+        <div class="alert alert-info" style="background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb;">
+            <i class="fas fa-info-circle"></i>
+            <strong>Info:</strong> Silakan <a href="<?php echo base_url('auth/login'); ?>" style="color: #0c5460; text-decoration: underline; font-weight: 600;">login</a> terlebih dahulu untuk membeli tiket event.
+        </div>
+        <?php endif; ?>
+
         <div class="search-bar" style="margin-bottom:1.5rem;display:flex;gap:0.5rem;align-items:center;">
             <form method="get" action="" style="width:100%;display:flex;gap:0.5rem;">
-                <input type="text" name="q" value="<?php echo htmlspecialchars($this->input->get('q') ?? ''); ?>" placeholder="Cari nama event..." class="search-input" style="flex:1;padding:0.7rem 1rem;border:2px solid #e1e1e1;border-radius:8px;font-size:1rem;">
+                <div style="position:relative;flex:1;">
+                    <input type="text" name="q" id="searchInput" value="<?php echo htmlspecialchars($this->input->get('q') ?? ''); ?>" placeholder="Cari nama event..." class="search-input" style="width:100%;padding:0.7rem 1rem;padding-right:2.5rem;border:2px solid #e1e1e1;border-radius:8px;font-size:1rem;">
+                </div>
                 <button type="submit" class="btn-search-event" style="background:var(--primary-color);color:#fff;border:none;padding:0.7rem 1.5rem;border-radius:8px;font-weight:600;display:flex;align-items:center;gap:0.5rem;cursor:pointer;transition:all 0.3s;">
                     <i class="fas fa-search"></i> Cari
                 </button>
@@ -681,6 +1103,26 @@
         </div>
     </div>
 
+    <!-- Lightbox Modal untuk Gambar -->
+    <div id="imageLightbox" class="lightbox-modal">
+        <span class="lightbox-close" onclick="closeImageLightbox()">&times;</span>
+        <div class="lightbox-controls">
+            <button class="lightbox-btn" onclick="zoomImage('in')" title="Zoom In (+)">
+                <i class="fas fa-search-plus"></i>
+            </button>
+            <button class="lightbox-btn" onclick="zoomImage('out')" title="Zoom Out (-)">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button class="lightbox-btn" onclick="zoomImage('reset')" title="Reset Zoom (0)">
+                <i class="fas fa-expand-arrows-alt"></i>
+            </button>
+        </div>
+        <div class="lightbox-image-container">
+            <img id="lightboxImage" class="lightbox-content" alt="Event Image">
+        </div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
     <script>
         // Filter functionality
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -709,14 +1151,19 @@
             fetch(`<?php echo base_url('events/get_detail/'); ?>${eventId}`)
                 .then(response => response.json())
                 .then(event => {
+                    // Format harga dengan pemisah ribuan yang benar
+                    const formattedPrice = new Intl.NumberFormat('id-ID').format(event.price);
+                    
                     const content = `
                         <h2>${event.event_name}</h2>
                         <div class="event-detail-content">
-                            <img src="<?php echo base_url(); ?>${event.image_url}" alt="${event.event_name}">
+                            <img src="<?php echo base_url(); ?>${event.image_url}" alt="${event.event_name}" 
+                                 onclick="openImageLightbox('<?php echo base_url(); ?>${event.image_url}', '${event.event_name}')"
+                                 title="Klik untuk melihat gambar penuh">
                             <p><strong>Tipe Event:</strong> ${event.event_type}</p>
                             <p><strong>Lokasi:</strong> ${event.location}</p>
                             <p><strong>Tanggal:</strong> ${new Date(event.date).toLocaleString()}</p>
-                            <p><strong>Harga:</strong> Rp ${event.price.toLocaleString()}</p>
+                            <p><strong>Harga:</strong> Rp ${formattedPrice}</p>
                             <p><strong>Tiket Tersedia:</strong> ${event.available_tickets}</p>
                             <p><strong>Deskripsi:</strong></p>
                             <p>${event.description}</p>
@@ -734,6 +1181,9 @@
                 .then(response => response.json())
                 .then(event => {
                     const maxQuantity = Math.min(event.available_for_booking, 10); // Maksimal 10 tiket per transaksi
+                    // Format harga dengan pemisah ribuan yang benar
+                    const formattedPrice = new Intl.NumberFormat('id-ID').format(event.price);
+                    
                     const content = `
                         <h2>Beli Tiket - ${event.event_name}</h2>
                         <form action="<?php echo base_url('events/buy'); ?>" method="POST" class="buy-form">
@@ -755,7 +1205,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Total Harga</label>
-                                <p id="totalPrice">Rp ${event.price.toLocaleString()}</p>
+                                <p id="totalPrice">Rp ${formattedPrice}</p>
                             </div>
                             <button type="submit" class="btn-submit">Beli Tiket</button>
                         </form>
@@ -781,8 +1231,110 @@
 
         function updateTotalPrice(quantity, price) {
             const total = quantity * price;
-            document.getElementById('totalPrice').textContent = `Rp ${total.toLocaleString()}`;
+            const formattedTotal = new Intl.NumberFormat('id-ID').format(total);
+            document.getElementById('totalPrice').textContent = `Rp ${formattedTotal}`;
         }
+
+        // Lightbox functions
+        function openImageLightbox(imageSrc, imageAlt) {
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = imageAlt;
+            lightboxCaption.textContent = imageAlt;
+            
+            // Reset zoom
+            currentZoom = 1;
+            lightboxImage.style.transform = 'scale(1)';
+            
+            lightbox.style.display = 'flex';
+            setTimeout(() => lightbox.classList.add('show'), 10);
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageLightbox() {
+            const lightbox = document.getElementById('imageLightbox');
+            lightbox.classList.remove('show');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                // Restore body scroll
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Zoom functionality
+        let currentZoom = 1;
+        const zoomStep = 0.2;
+        const maxZoom = 3;
+        const minZoom = 0.5;
+
+        function zoomImage(direction) {
+            const lightboxImage = document.getElementById('lightboxImage');
+            
+            if (direction === 'in') {
+                currentZoom = Math.min(currentZoom + zoomStep, maxZoom);
+            } else if (direction === 'out') {
+                currentZoom = Math.max(currentZoom - zoomStep, minZoom);
+            } else if (direction === 'reset') {
+                currentZoom = 1;
+            }
+            
+            lightboxImage.style.transform = `scale(${currentZoom})`;
+        }
+
+        // Close lightbox when clicking outside the image
+        document.addEventListener('click', function(event) {
+            const lightbox = document.getElementById('imageLightbox');
+            
+            if (event.target === lightbox && lightbox.style.display === 'flex') {
+                closeImageLightbox();
+            }
+        });
+
+        // Keyboard controls for lightbox
+        document.addEventListener('keydown', function(event) {
+            const lightbox = document.getElementById('imageLightbox');
+            
+            if (lightbox.style.display === 'flex') {
+                switch(event.key) {
+                    case 'Escape':
+                        closeImageLightbox();
+                        break;
+                    case '+':
+                    case '=':
+                        event.preventDefault();
+                        zoomImage('in');
+                        break;
+                    case '-':
+                        event.preventDefault();
+                        zoomImage('out');
+                        break;
+                    case '0':
+                        event.preventDefault();
+                        zoomImage('reset');
+                        break;
+                }
+            }
+        });
+
+        // Mouse wheel zoom
+        document.addEventListener('wheel', function(event) {
+            const lightbox = document.getElementById('imageLightbox');
+            
+            if (lightbox.style.display === 'flex' && event.ctrlKey) {
+                event.preventDefault();
+                
+                if (event.deltaY < 0) {
+                    zoomImage('in');
+                } else {
+                    zoomImage('out');
+                }
+            }
+        });
 
         // Close modal when clicking outside
         window.onclick = function(event) {
@@ -791,6 +1343,55 @@
                 setTimeout(() => event.target.style.display = 'none', 300);
             }
         }
+
+        // Clear search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const clearSearchBtn = document.getElementById('clearSearch');
+            
+            // Show/hide clear button based on input value
+            function toggleClearButton() {
+                if (searchInput.value.trim() !== '') {
+                    if (!clearSearchBtn) {
+                        const btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.id = 'clearSearch';
+                        btn.className = 'clear-search-btn';
+                        btn.innerHTML = '<i class="fas fa-times"></i>';
+                        btn.title = 'Hapus pencarian';
+                        btn.onclick = clearSearch;
+                        searchInput.parentNode.appendChild(btn);
+                    }
+                } else {
+                    if (clearSearchBtn) {
+                        clearSearchBtn.remove();
+                    }
+                }
+            }
+
+            // Clear search function
+            function clearSearch() {
+                searchInput.value = '';
+                searchInput.focus();
+                
+                // Remove query parameter and redirect
+                const url = new URL(window.location);
+                url.searchParams.delete('q');
+                url.searchParams.delete('page'); // Reset to page 1
+                window.location.href = url.toString();
+            }
+
+            // Add event listeners
+            searchInput.addEventListener('input', toggleClearButton);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Escape') {
+                    clearSearch();
+                }
+            });
+
+            // Initial check
+            toggleClearButton();
+        });
     </script>
 </body>
 </html>

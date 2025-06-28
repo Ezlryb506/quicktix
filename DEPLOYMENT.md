@@ -1,4 +1,23 @@
-# Panduan Deployment QuickTix
+# 🚀 QuickTix Deployment Guide
+
+## 📋 **Repository Information**
+- **Repository**: https://github.com/Ezlryb506/quicktix
+- **Status**: Public (Recommended for UAS Project)
+- **Alternative**: Private repository dengan deployment key
+
+### **Jika Repository Private:**
+```bash
+# Setup SSH Key untuk deployment
+ssh-keygen -t rsa -b 4096 -C "deployment@yourdomain.com"
+
+# Tambahkan public key ke GitHub:
+# 1. Buka repository Settings
+# 2. Deploy keys → Add deploy key
+# 3. Paste public key content
+# 4. Allow write access (jika diperlukan)
+```
+
+## 📋 **Panduan Deployment QuickTix**
 
 ## Daftar Isi
 1. [Persiapan Repository GitHub](#persiapan-repository-github)
