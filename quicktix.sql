@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2025 at 10:10 AM
+-- Generation Time: Jun 28, 2025 at 08:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+07:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -47,15 +47,24 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`id`, `event_name`, `event_type`, `location`, `date`, `price`, `available_tickets`, `description`, `image_url`, `status`, `created_at`, `updated_at`) VALUES
-(4, 'Java Jazz Festival 2024', 'Festival', 'JIExpo Kemayoran', '2025-07-20 14:00:00', 350000.00, 497, 'Festival musik jazz terbesar di Indonesia dengan berbagai artis lokal dan internasional.', 'uploads/ph-festival.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 07:47:00'),
-(5, 'We The Fest 2024', 'Festival', 'GBK Senayan', '2025-07-27 12:00:00', 750000.00, 999, 'Festival musik indie terbesar di Indonesia dengan lineup artis lokal dan internasional.', 'uploads/ph-festival.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 08:05:16'),
-(6, 'Jakarta Food Festival', 'Festival', 'Kemayoran City', '2025-08-03 10:00:00', 150000.00, 300, 'Festival kuliner terbesar di Jakarta dengan berbagai makanan lokal dan internasional.', 'uploads/ph-festival.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 06:13:04'),
-(7, 'Web Development Workshop', 'Workshop', 'Tech Hub Jakarta', '2025-08-10 09:00:00', 150000.00, 29, 'Workshop intensif tentang pengembangan web modern menggunakan teknologi terbaru.', 'uploads/ph-workshop.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 06:13:04'),
-(8, 'UI/UX Design Masterclass', 'Workshop', 'Design Space Jakarta', '2025-08-17 13:00:00', 200000.00, 24, 'Workshop mendalam tentang prinsip dan praktik terbaik dalam desain UI/UX.', 'uploads/ph-workshop.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 06:13:05'),
-(9, 'Digital Marketing Workshop', 'Workshop', 'Marketing Hub', '2025-08-24 10:00:00', 175000.00, 39, 'Workshop komprehensif tentang strategi dan teknik digital marketing terkini.', 'uploads/ph-workshop.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 06:13:05'),
-(10, 'Coldplay Concert', 'Konser', 'Gelora Bung Karno', '2025-08-31 20:00:00', 1500000.00, 1999, 'Konser spektakuler dari band legendaris Coldplay dengan visual dan efek yang memukau.', 'uploads/ph-konser.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 06:13:05'),
-(11, 'Taylor Swift Concert', 'Konser', 'ICE BSD', '2025-09-07 19:00:00', 2000000.00, 1500, 'Konser eksklusif dari Taylor Swift dengan setlist terbaik dari album-albumnya.', 'uploads/ph-konser.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 06:13:05'),
-(12, 'Ed Sheeran Live in Jakarta', 'Konser', 'Stadion Madya', '2025-09-14 20:00:00', 1800000.00, 1800, 'Konser akustik intim dari Ed Sheeran dengan hits terbaiknya.', 'uploads/ph-konser.jpg', 'active', '2025-05-29 16:30:42', '2025-06-20 06:13:05');
+(4, 'Java Jazz Festival 2025', 'Festival', 'JIExpo Kemayoran', '2025-07-20 14:00:00', 350000.00, 500, 'Festival musik jazz terbesar di Indonesia dengan berbagai artis lokal dan internasional.', 'uploads/ph-festival.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:21:12'),
+(5, 'We The Fest 2025', 'Festival', 'GBK Senayan', '2025-07-27 12:00:00', 750000.00, 900, 'Festival musik indie terbesar di Indonesia dengan lineup artis lokal dan internasional.', 'uploads/ph-festival.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:21:18'),
+(6, 'Jakarta Food Festival', 'Festival', 'Kemayoran City', '2025-08-03 10:00:00', 150000.00, 300, 'Festival kuliner terbesar di Jakarta dengan berbagai makanan lokal dan internasional.', 'uploads/ph-festival.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:21:24'),
+(7, 'Web Development Workshop', 'Workshop', 'Tech Hub Jakarta', '2025-08-10 09:00:00', 150000.00, 30, 'Workshop intensif tentang pengembangan web modern menggunakan teknologi terbaru.', 'uploads/ph-workshop.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:21:30'),
+(8, 'UI/UX Design Masterclass', 'Workshop', 'Design Space Jakarta', '2025-08-17 13:00:00', 200000.00, 30, 'Workshop mendalam tentang prinsip dan praktik terbaik dalam desain UI/UX.', 'uploads/ph-workshop.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:21:45'),
+(9, 'Digital Marketing Workshop', 'Workshop', 'Marketing Hub', '2025-08-24 10:00:00', 175000.00, 40, 'Workshop komprehensif tentang strategi dan teknik digital marketing terkini.', 'uploads/ph-workshop.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:21:51'),
+(10, 'Coldplay Concert', 'Konser', 'Gelora Bung Karno', '2025-08-31 20:00:00', 1500000.00, 2000, 'Konser spektakuler dari band legendaris Coldplay dengan visual dan efek yang memukau.', 'uploads/ph-konser.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:21:57'),
+(11, 'Taylor Swift Concert', 'Konser', 'ICE BSD', '2025-09-07 19:00:00', 2000000.00, 1500, 'Konser eksklusif dari Taylor Swift dengan setlist terbaik dari album-albumnya.', 'uploads/ph-konser.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:22:06'),
+(12, 'Ed Sheeran Live in Jakarta', 'Konser', 'Stadion Madya', '2025-09-14 20:00:00', 1800000.00, 1700, 'Konser akustik intim dari Ed Sheeran dengan hits terbaiknya.', 'uploads/ph-konser.jpg', 'active', '2025-05-29 16:30:42', '2025-06-28 06:22:13'),
+(13, 'Bali Spirit Festival 2025', 'Festival', 'Ubud, Bali', '2025-09-21 08:00:00', 450000.00, 800, 'Festival spiritual dan musik yang menggabungkan budaya lokal Bali dengan musik dunia.', 'uploads/ph-festival.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(14, 'Surabaya Art Festival', 'Festival', 'Taman Bungkul, Surabaya', '2025-09-28 16:00:00', 200000.00, 600, 'Festival seni dan budaya terbesar di Jawa Timur dengan pertunjukan musik, tari, dan pameran seni.', 'uploads/ph-festival.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(15, 'Bandung Creative Festival', 'Festival', 'Gedung Sate, Bandung', '2025-10-05 10:00:00', 300000.00, 400, 'Festival kreativitas dan inovasi yang menghadirkan karya-karya terbaik dari komunitas kreatif Bandung.', 'uploads/ph-festival.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(16, 'Mobile App Development Workshop', 'Workshop', 'Digital Valley Jakarta', '2025-09-07 09:00:00', 250000.00, 25, 'Workshop lengkap tentang pengembangan aplikasi mobile menggunakan React Native dan Flutter.', 'uploads/ph-workshop.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(17, 'Data Science & AI Workshop', 'Workshop', 'AI Innovation Center', '2025-09-14 13:00:00', 300000.00, 35, 'Workshop mendalam tentang data science, machine learning, dan artificial intelligence.', 'uploads/ph-workshop.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(18, 'Cybersecurity Workshop', 'Workshop', 'Security Hub Jakarta', '2025-09-21 10:00:00', 225000.00, 30, 'Workshop keamanan siber yang membahas teknik hacking etis dan proteksi sistem.', 'uploads/ph-workshop.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(19, 'Bruno Mars Live in Jakarta', 'Konser', 'ICE BSD Tangerang', '2025-10-12 20:00:00', 2200000.00, 1800, 'Konser spektakuler dari Bruno Mars dengan hits terbaik dan performa yang memukau.', 'uploads/ph-konser.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(20, 'BTS World Tour Jakarta', 'Konser', 'Gelora Bung Karno', '2025-10-19 19:00:00', 2500000.00, 2500, 'Konser dunia dari boyband Korea Selatan BTS dengan pertunjukan yang spektakuler.', 'uploads/ph-konser.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00'),
+(21, 'Ariana Grande Sweetener World Tour', 'Konser', 'ICE BSD Tangerang', '2025-10-26 20:00:00', 2300000.00, 1600, 'Konser dunia dari Ariana Grande dengan setlist dari album Sweetener dan Thank U, Next.', 'uploads/ph-konser.jpg', 'active', '2025-06-28 08:00:00', '2025-06-28 08:00:00');
 
 -- --------------------------------------------------------
 
@@ -76,21 +85,6 @@ CREATE TABLE `transactions` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`id`, `ticket_id`, `user_id`, `quantity`, `total_price`, `payment_method`, `payment_details`, `payment_status`, `is_used`, `created_at`, `updated_at`) VALUES
-(2, 4, 1, 1, 350000.00, 'qris', '{\"event_name\":\"Java Jazz Festival 2024\",\"event_type\":\"Festival\",\"location\":\"JIExpo Kemayoran\",\"date\":\"2024-06-20 14:00:00\"}', 'paid', 0, '2025-05-29 12:32:39', '2025-05-30 03:41:27'),
-(3, 8, 1, 1, 200000.00, 'e_wallet', '{\"event_name\":\"UI\\/UX Design Masterclass\",\"event_type\":\"Workshop\",\"location\":\"Design Space Jakarta\",\"date\":\"2024-05-25 13:00:00\"}', 'paid', 1, '2025-05-29 12:32:55', '2025-06-20 02:58:55'),
-(4, 7, 1, 1, 150000.00, 'transfer_bank', '{\"event_name\":\"Web Development Workshop\",\"event_type\":\"Workshop\",\"location\":\"Tech Hub Jakarta\",\"date\":\"2024-04-10 09:00:00\"}', 'pending', 0, '2025-05-29 12:56:50', '2025-05-29 12:56:50'),
-(6, 4, 2, 1, 350000.00, 'qris', '{\"event_name\":\"Java Jazz Festival 2024\",\"event_type\":\"Festival\",\"location\":\"JIExpo Kemayoran\",\"date\":\"2024-06-20 14:00:00\"}', 'cancelled', 0, '2025-05-29 14:12:33', '2025-05-29 14:13:00'),
-(7, 9, 2, 1, 175000.00, 'qris', '{\"event_name\":\"Digital Marketing Workshop\",\"event_type\":\"Workshop\",\"location\":\"Marketing Hub\",\"date\":\"2024-06-15 10:00:00\"}', 'pending', 0, '2025-05-29 21:58:02', '2025-05-29 21:58:02'),
-(8, 10, 2, 1, 1500000.00, 'transfer_bank', '{\"event_name\":\"Coldplay Concert\",\"event_type\":\"Konser\",\"location\":\"Gelora Bung Karno\",\"date\":\"2024-07-25 20:00:00\"}', 'pending', 0, '2025-05-29 21:59:23', '2025-05-29 21:59:23'),
-(11, 4, 4, 1, 350000.00, 'e_wallet', '{\"event_name\":\"Java Jazz Festival 2024\",\"event_type\":\"Festival\",\"location\":\"JIExpo Kemayoran\",\"date\":\"2025-07-20 14:00:00\"}', 'paid', 1, '2025-06-20 02:36:22', '2025-06-20 02:42:14'),
-(12, 4, 4, 1, 350000.00, 'transfer_bank', '{\"event_name\":\"Java Jazz Festival 2024\",\"event_type\":\"Festival\",\"location\":\"JIExpo Kemayoran\",\"date\":\"2025-07-20 14:00:00\"}', 'paid', 1, '2025-06-20 02:47:00', '2025-06-20 02:53:36'),
-(13, 5, 5, 1, 750000.00, 'e_wallet', '{\"event_name\":\"We The Fest 2024\",\"event_type\":\"Festival\",\"location\":\"GBK Senayan\",\"date\":\"2025-07-27 12:00:00\"}', 'paid', 0, '2025-06-20 03:05:16', '2025-06-20 08:05:40');
 
 -- --------------------------------------------------------
 
@@ -179,13 +173,13 @@ ALTER TABLE `user_sessions`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`

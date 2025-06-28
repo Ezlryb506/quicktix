@@ -7,7 +7,6 @@ class Events extends CI_Controller {
         $this->load->model('event_model');
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->library('pagination');
         $this->load->database();
     }
 
@@ -17,61 +16,89 @@ class Events extends CI_Controller {
     }
 
     public function search() {
-        $type = $this->input->get('type');
-        $search_query = $this->input->get('q');
-        $page = $this->input->get('page') ? $this->input->get('page') : 1;
+        $type = $this->input->get('type') ? $this->input->get('type') : 'all';
+        $search_query = $this->input->get('q') ? $this->input->get('q') : '';
+        $page = $this->input->get('page') ? (int)$this->input->get('page') : 1;
         
-        // Konfigurasi pagination
-        $config['base_url'] = base_url('events/search');
-        $config['per_page'] = 15; // Batasi 15 card per halaman
-        $config['page_query_string'] = TRUE;
-        $config['query_string_segment'] = 'page';
-        $config['use_page_numbers'] = TRUE;
-        $config['reuse_query_string'] = TRUE;
+        // Validasi page number
+        if ($page < 1) {
+            $page = 1;
+        }
         
-        // Styling pagination
-        $config['full_tag_open'] = '<nav><ul class="pagination">';
-        $config['full_tag_close'] = '</ul></nav>';
-        $config['first_link'] = '&laquo; Pertama';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-        $config['last_link'] = 'Terakhir &raquo;';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo;';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo;';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-        $config['anchor_class'] = 'page-link';
+        $per_page = 15;
+        $offset = ($page - 1) * $per_page;
         
         // Ambil total records untuk pagination
         $total_records = $this->event_model->get_events_count($type, $search_query);
-        $config['total_rows'] = $total_records;
-        
-        // Inisialisasi pagination
-        $this->pagination->initialize($config);
+        $total_pages = ceil($total_records / $per_page);
         
         // Ambil data events dengan pagination
-        $events = $this->event_model->get_events_paginated($type, $search_query, $config['per_page'], ($page - 1) * $config['per_page']);
+        $events = $this->event_model->get_events_paginated($type, $search_query, $per_page, $offset);
         
         // Untuk sistem demo, available_for_booking sama dengan available_tickets
         foreach ($events as &$event) {
             $event['available_for_booking'] = $event['available_tickets'];
         }
         
+        // Buat pagination manual
+        $pagination = $this->create_manual_pagination($page, $total_pages, $type, $search_query);
+        
         $data['events'] = $events;
-        $data['pagination'] = $this->pagination->create_links();
+        $data['pagination'] = $pagination;
         $data['total_records'] = $total_records;
         $data['current_page'] = $page;
-        $data['per_page'] = $config['per_page'];
+        $data['per_page'] = $per_page;
         $data['title'] = 'Cari Event - QuickTix';
         $this->load->view('events/search', $data);
+    }
+    
+    private function create_manual_pagination($current_page, $total_pages, $type, $search_query) {
+        if ($total_pages <= 1) {
+            return '';
+        }
+        
+        $base_url = base_url('events/search');
+        $query_params = [];
+        
+        if ($type && $type !== 'all') {
+            $query_params[] = 'type=' . urlencode($type);
+        }
+        
+        if ($search_query) {
+            $query_params[] = 'q=' . urlencode($search_query);
+        }
+        
+        $query_string = !empty($query_params) ? '?' . implode('&', $query_params) . '&' : '?';
+        
+        $pagination = '<ul class="pagination">';
+        
+        // Previous button
+        if ($current_page > 1) {
+            $prev_page = $current_page - 1;
+            $pagination .= '<li><a href="' . $base_url . $query_string . 'page=' . $prev_page . '">Sebelumnya</a></li>';
+        }
+        
+        // Page numbers
+        $start_page = max(1, $current_page - 2);
+        $end_page = min($total_pages, $current_page + 2);
+        
+        for ($i = $start_page; $i <= $end_page; $i++) {
+            if ($i == $current_page) {
+                $pagination .= '<li class="active"><a href="#">' . $i . '</a></li>';
+            } else {
+                $pagination .= '<li><a href="' . $base_url . $query_string . 'page=' . $i . '">' . $i . '</a></li>';
+            }
+        }
+        
+        // Next button
+        if ($current_page < $total_pages) {
+            $next_page = $current_page + 1;
+            $pagination .= '<li><a href="' . $base_url . $query_string . 'page=' . $next_page . '">Selanjutnya</a></li>';
+        }
+        
+        $pagination .= '</ul>';
+        
+        return $pagination;
     }
 
     public function get_detail($id) {
