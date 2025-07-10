@@ -317,7 +317,7 @@
                 <i class="fas fa-qrcode"></i>
                 Validasi QR
             </a>
-            <a href="<?php echo base_url('auth/logout'); ?>" class="nav-link">
+            <a href="<?php echo base_url('auth/logout'); ?>" class="nav-link" id="logoutLink">
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>
@@ -429,5 +429,51 @@
             </a>
         </div>
     </div>
+    <!-- Modal Konfirmasi Logout (Admin) -->
+    <div id="logoutModal" class="modal-logout" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(44,62,80,0.18);align-items:center;justify-content:center;">
+        <div class="modal-logout-content" style="background:#fff;padding:2rem 1.5rem;border-radius:14px;box-shadow:0 8px 32px rgba(102,126,234,0.18);max-width:340px;width:90%;text-align:center;position:relative;animation:modalFadeIn 0.2s;">
+            <i class="fas fa-sign-out-alt" style="font-size:2.2rem;color:#764ba2;margin-bottom:0.7rem;"></i>
+            <h3 style="color:#2C3E50;margin-bottom:0.7rem;">Konfirmasi Logout</h3>
+            <p style="color:#555;margin-bottom:1.5rem;">Apakah Anda yakin ingin logout dari panel admin?</p>
+            <div style="display:flex;gap:1rem;justify-content:center;">
+                <button id="cancelLogoutBtn" style="padding:0.6rem 1.2rem;border:none;border-radius:6px;background:#eee;color:#333;font-weight:500;cursor:pointer;transition:background 0.2s;">Batal</button>
+                <button id="confirmLogoutBtn" style="padding:0.6rem 1.2rem;border:none;border-radius:6px;background:#764ba2;color:#fff;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(102,126,234,0.10);transition:background 0.2s;">Ya, Logout</button>
+            </div>
+        </div>
+    </div>
+    <style>
+    @keyframes modalFadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
+    .modal-logout.show { display:flex !important; }
+    .modal-logout .modal-logout-content { animation: modalFadeIn 0.2s; }
+    .modal-logout button:hover { filter:brightness(0.95); }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const logoutLink = document.getElementById('logoutLink');
+        const logoutModal = document.getElementById('logoutModal');
+        const cancelLogoutBtn = document.getElementById('cancelLogoutBtn');
+        const confirmLogoutBtn = document.getElementById('confirmLogoutBtn');
+        if (logoutLink && logoutModal) {
+            logoutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                logoutModal.classList.add('show');
+            });
+        }
+        if (cancelLogoutBtn && logoutModal) {
+            cancelLogoutBtn.onclick = function() {
+                logoutModal.classList.remove('show');
+            };
+        }
+        if (confirmLogoutBtn && logoutLink) {
+            confirmLogoutBtn.onclick = function() {
+                window.location.href = logoutLink.href;
+            };
+        }
+        // Tutup modal jika klik di luar konten
+        logoutModal.addEventListener('click', function(e) {
+            if (e.target === logoutModal) logoutModal.classList.remove('show');
+        });
+    });
+    </script>
 </body>
 </html> 

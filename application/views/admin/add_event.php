@@ -354,7 +354,7 @@
                 <i class="fas fa-qrcode"></i>
                 Validasi QR
             </a>
-            <a href="<?php echo base_url('auth/logout'); ?>" class="nav-link">
+            <a href="<?php echo base_url('auth/logout'); ?>" class="nav-link" id="logoutLink">
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>
@@ -587,6 +587,19 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeImagePicker();
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tambahkan konfirmasi logout
+            const logoutLink = document.getElementById('logoutLink');
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function(e) {
+                    if (!confirm('Apakah Anda yakin ingin logout?')) {
+                        e.preventDefault();
+                    }
+                });
             }
         });
     </script>

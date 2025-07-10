@@ -43,7 +43,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            gap: 32rem;
+            gap: 2rem;
         }
 
         .logo {
@@ -116,6 +116,21 @@
             background: linear-gradient(135deg, var(--primary-color) 0%, #357ABD 100%);
             color: var(--white);
             text-align: center;
+            /* Tambahan agar tidak tertutup navbar di mobile */
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 8rem;
+                /* Tambahan agar tidak tertutup navbar */
+                margin-top: 70px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 7rem;
+                margin-top: 60px;
+            }
         }
 
         .hero-content {
@@ -222,47 +237,150 @@
 
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .event-card {
-            background: var(--background-color); /* DIPERBAIKI: Menggunakan variabel yang ada */
+            background: var(--background-color);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
-
         .event-image {
             width: 100%;
             height: 200px;
-            object-fit: contain;
+            object-fit: cover;
             background: #f4f6fa;
             border-radius: 10px 10px 0 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
-
         .event-content {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            height: 100%;
         }
-
         .event-content h3 {
             margin-bottom: 0.5rem;
             color: var(--text-color);
+            min-height: 2.6em;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-
         .event-content p {
             color: #666;
             margin-bottom: 1rem;
         }
-
         .event-price {
             color: var(--primary-color);
             font-weight: 600;
             font-size: 1.2rem;
+            margin-top: auto;
+        }
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .event-card {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 480px) {
+            .event-image {
+                height: 150px;
+            }
+            .event-content {
+                padding: 1rem;
+            }
+        }
+        
+        /* Modal untuk menampilkan gambar */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+        
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+        
+        .modal-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .modal-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            background: #357ABD;
+            transform: translateY(-2px);
         }
 
         .event-action-center {
@@ -333,25 +451,179 @@
             font-size: 1.3em;
         }
 
-        /* DIPERBAIKI: Kode responsif ditambahkan kembali */
+        /* DIPERBAIKI: Kode responsif yang lebih komprehensif */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
+                padding: 0.5rem 0;
             }
+            
             .nav-buttons {
                 width: 100%;
                 justify-content: center;
-                margin-top: 0.5rem;
+                flex-wrap: wrap;
+                gap: 0.5rem;
             }
+            
+            .btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            
             .hero {
-                padding: 6rem 5% 3rem;
+                padding: 8rem 5% 3rem;
             }
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
             }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .features {
+                padding: 3rem 5%;
+            }
+            
+            .features h2 {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .features-carousel-container {
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+            
+            .features-grid {
+                flex-direction: column;
+                animation: none;
+                gap: 1rem;
+            }
+            
+            .feature-card {
+                width: 100%;
+                margin: 0 auto;
+                max-width: 350px;
+            }
+            
+            .events {
+                padding: 3rem 5%;
+            }
+            
+            .events h2 {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
             .events-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .event-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .btn-go-events {
+                padding: 0.7rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .footer {
+                padding: 2rem 5%;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .social-links a {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Tablet breakpoint */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-container {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .features-grid {
+                gap: 1.5rem;
+            }
+            
+            .feature-card {
+                width: 250px;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 7rem;
+                margin-top: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .features, .events {
+                padding: 2rem 3%;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .event-content {
+                padding: 1rem;
+            }
+            
+            .btn-go-events {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Modal responsif untuk mobile */
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .modal-image {
+                max-height: 70vh;
+            }
+            
+            .close-modal {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+            }
+            
+            .modal-controls {
+                bottom: 10px;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .modal-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -408,19 +680,19 @@
         <h2>Event Terbaru</h2>
         <div class="events-grid">
             <div class="event-card">
-                <img src="uploads/java-jazz.jpg" alt="Event 1" class="event-image">
+                <img src="uploads/java-jazz.jpg" alt="Event 1" class="event-image" onclick="openImageModal(this.src, 'Konser Musik Jazz')">
                 <div class="event-content">
                     <h3>Konser Musik Jazz</h3><p>Sabtu, 23 Juni 2025 • 19:00 WIB</p><p>Venue: Jakarta Convention Center</p><p class="event-price">Rp 250.000</p>
                 </div>
             </div>
             <div class="event-card">
-                <img src="uploads/digital-marketing.jpg" alt="Event 2" class="event-image">
+                <img src="uploads/digital-marketing.jpg" alt="Event 2" class="event-image" onclick="openImageModal(this.src, 'Workshop Digital Marketing')">
                 <div class="event-content">
                     <h3>Workshop Digital Marketing</h3><p>Minggu, 29 Juni 2025 • 09:00 WIB</p><p>Venue: Digital Hub Jakarta</p><p class="event-price">Rp 150.000</p>
                 </div>
             </div>
             <div class="event-card">
-                <img src="uploads/festival-kuliner-Bekasi2.jpg" alt="Event 3" class="event-image">
+                <img src="uploads/festival-kuliner-Bekasi2.jpg" alt="Event 3" class="event-image" onclick="openImageModal(this.src, 'Festival Kuliner')">
                 <div class="event-content">
                     <h3>Festival Kuliner</h3><p>Sabtu, 5 Juli 2025 • 10:00 WIB</p><p>Venue: Central Park Mall</p><p class="event-price">Rp 100.000</p>
                 </div>
@@ -432,6 +704,19 @@
             </a>
         </div>
     </section>
+
+    <!-- Modal untuk menampilkan gambar -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="Event Image">
+            <div class="modal-controls">
+                <button class="modal-btn" onclick="zoomIn()"><i class="fas fa-search-plus"></i> Zoom In</button>
+                <button class="modal-btn" onclick="zoomOut()"><i class="fas fa-search-minus"></i> Zoom Out</button>
+                <button class="modal-btn" onclick="resetZoom()"><i class="fas fa-undo"></i> Reset</button>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer" id="contact">
         <!-- DIPERBAIKI: Konten footer ditambahkan kembali -->
@@ -458,6 +743,92 @@
                 clone.setAttribute('aria-hidden', 'true'); 
                 track.appendChild(clone);
             });
+        });
+
+        // Variabel untuk zoom
+        let currentZoom = 1;
+        const zoomStep = 0.2;
+        const maxZoom = 3;
+        const minZoom = 0.5;
+
+        // Fungsi untuk membuka modal gambar
+        function openImageModal(imageSrc, imageAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            currentZoom = 1;
+            modalImage.style.transform = `scale(${currentZoom})`;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Mencegah scroll
+        }
+
+        // Fungsi untuk menutup modal
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Mengembalikan scroll
+        }
+
+        // Fungsi zoom in
+        function zoomIn() {
+            if (currentZoom < maxZoom) {
+                currentZoom += zoomStep;
+                updateZoom();
+            }
+        }
+
+        // Fungsi zoom out
+        function zoomOut() {
+            if (currentZoom > minZoom) {
+                currentZoom -= zoomStep;
+                updateZoom();
+            }
+        }
+
+        // Fungsi reset zoom
+        function resetZoom() {
+            currentZoom = 1;
+            updateZoom();
+        }
+
+        // Fungsi update zoom
+        function updateZoom() {
+            const modalImage = document.getElementById('modalImage');
+            modalImage.style.transform = `scale(${currentZoom})`;
+        }
+
+        // Menutup modal ketika klik di luar gambar
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageModal();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (modal.style.display === 'block') {
+                switch(e.key) {
+                    case 'Escape':
+                        closeImageModal();
+                        break;
+                    case '+':
+                    case '=':
+                        e.preventDefault();
+                        zoomIn();
+                        break;
+                    case '-':
+                        e.preventDefault();
+                        zoomOut();
+                        break;
+                    case '0':
+                        resetZoom();
+                        break;
+                }
+            }
         });
     </script>
 </body>
