@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
+    <link rel="icon" type="image/png" href="<?php echo base_url('uploads/tickets.png'); ?>">
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;

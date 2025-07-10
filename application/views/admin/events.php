@@ -6,6 +6,7 @@
     <title><?php echo $title; ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="<?php echo base_url('uploads/tickets.png'); ?>">
     <style>
         :root {
             --primary-color: #4A90E2;
@@ -455,6 +456,30 @@
                 flex-direction: column;
             }
         }
+        .btn-back-to-search {
+            display: inline-block;
+            background: #fff;
+            color: #4A90E2;
+            border: 2px solid #4A90E2;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 1.08em;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(74,144,226,0.10);
+            transition: all 0.2s;
+            margin-left: 1rem;
+        }
+        .btn-back-to-search i {
+            margin-right: 0.5rem;
+        }
+        .btn-back-to-search:hover {
+            background: #4A90E2;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(74,144,226,0.18);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -486,7 +511,9 @@
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>
-            <span class="admin-badge">ADMIN</span>
+            <a href="<?php echo base_url('events/search'); ?>" class="btn-back-to-search">
+                <i class="fas fa-arrow-left"></i> Kembali ke Cari Event
+            </a>
         </div>
     </div>
 

@@ -6,6 +6,7 @@
     <title>Cari Event - QuickTix</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="<?php echo base_url('uploads/tickets.png'); ?>">
     <style>
         :root {
             --primary-color: #4A90E2;
@@ -124,25 +125,29 @@
             transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.18s;
         }
         .nav-link.btn-login {
-            color: var(--primary-color);
-            background: linear-gradient(90deg, #fff 60%, #e3f0ff 100%);
+            color: var(--white);
+            background: var(--primary-color);
             border: 2px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(74,144,226,0.13);
         }
         .nav-link.btn-login:hover, .nav-link.btn-login:focus {
-            background: var(--primary-color);
-            color: var(--white);
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
             box-shadow: 0 4px 15px rgba(74,144,226,0.18);
             transform: translateY(-2px) scale(1.05);
         }
         .nav-link.btn-register {
-            background: linear-gradient(90deg, #4A90E2 60%, #E74C3C 100%);
+            background: #4A90E2;
             color: var(--white);
-            border: 2px solid var(--primary-color);
+            border: 2px solid #4A90E2;
+            box-shadow: 0 2px 8px rgba(74,144,226,0.13);
         }
         .nav-link.btn-register:hover, .nav-link.btn-register:focus {
-            background: linear-gradient(90deg, #E74C3C 0%, #4A90E2 100%);
+            background: #357ABD;
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(231,76,60,0.18);
+            border: 2px solid #357ABD;
+            box-shadow: 0 4px 15px rgba(74,144,226,0.18);
             transform: translateY(-2px) scale(1.05);
         }
         @media (max-width: 1024px) {
