@@ -128,8 +128,8 @@ quicktix/
 Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detail.
 
 ## Kontak
-- **Email**: your-email@example.com
-- **GitHub**: [@username](https://github.com/Ezlryb506)
+- **Email**: ezlryb506@gmail.com
+- **GitHub**: [@Ezlryb506](https://github.com/Ezlryb506)
 
 ## Screenshots
 [Tambahkan screenshot aplikasi di sini]
