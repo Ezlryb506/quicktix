@@ -117,30 +117,9 @@ quicktix/
 └── README.md           # Dokumentasi
 ```
 
-## Kontribusi
-1. Fork repository
-2. Buat branch fitur baru (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buat Pull Request
-
 ## Lisensi
 Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detail.
 
 ## Kontak
 - **Email**: ezlryb506@gmail.com
 - **GitHub**: [@Ezlryb506](https://github.com/Ezlryb506)
-
-## Screenshots
-[Tambahkan screenshot aplikasi di sini]
-
-## Changelog
-### v1.0.0 (2025-01-XX)
-- Initial release
-- Fitur pencarian dan pemesanan tiket
-- Sistem autentikasi user
-- Validasi QR code
-- Pagination pada halaman event
-
----
-**Dibuat dengan ❤️ menggunakan CodeIgniter 3** 
